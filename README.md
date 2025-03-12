@@ -35,8 +35,8 @@ Run the following command from the root of the repo to install the dependencies 
 
 To run apps with the monorepo, you will need to run following commands in the root folder
 
-1. yarn workspace mobile run
-2. yarn workspace web run
+1. yarn workspace mobile start
+2. yarn workspace web start
 
 ### References
 
