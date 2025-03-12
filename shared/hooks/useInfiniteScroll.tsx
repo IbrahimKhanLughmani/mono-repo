@@ -16,21 +16,18 @@ const useInfiniteScroll = () => {
 
     const fetchData = useCallback(async (currentPage: number) => {
         if (loading || !hasMore) return;
-
         setLoading(true);
         try {
             const response = await axios.get(`${API_URL}?_page=${currentPage}&_limit=10`);
             const newData: Post[] = response.data;
-
             if (newData.length === 0) {
                 setHasMore(false);
-            } else {
-                setData((prevData) => [...prevData, ...newData]);
+                return;
             }
+            setData((prevData) => [...prevData, ...newData]);
+            setLoading(false);
         } catch (error) {
             console.error('Error fetching data:', error);
-        } finally {
-            setLoading(false);
         }
     }, [loading, hasMore]);
 
